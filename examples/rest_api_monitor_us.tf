@@ -70,4 +70,20 @@ resource "site24x7_rest_api_monitor" "rest_api_monitor_us" {
  	  severity= 2
  	  value= ".*aaa.*"
  	}
+  // (Optional) List if tag IDs to be associated to the monitor.
+  tag_ids = [
+    "123",
+  ]
+
+  // (Optional) Map of custom HTTP headers to send.
+  custom_headers = {
+    "Accept" = "application/json"
+  }
+
+  // (Optional) Map of HTTP response headers to check.
+  response_headers_severity = 0 // Can take values 0 or 2. '0' denotes Down and '2' denotes Trouble.
+  response_headers = {
+    "Content-Encoding" = "gzip"
+    "Connection" = "Keep-Alive"
+  }
 }
